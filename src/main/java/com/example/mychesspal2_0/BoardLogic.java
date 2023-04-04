@@ -81,7 +81,8 @@ public class BoardLogic {
             if (iY - 1 == tY) {
                 return true;
             }
-            if () {
+            if (iY - 1 == tY && iY == 3 && board[tX][iY] == 1) {
+                board[tX][iY] = 0;
                 return true;
             }
         }
@@ -102,7 +103,8 @@ public class BoardLogic {
             if (iY + 1 == tY) {
                 return true;
             }
-            if () {
+            if (iY + 1 == tY && iY == 4 && board[tX][iY] == -1) {
+                board[tX][iY] = 0;
                 return true;
             }
         }
