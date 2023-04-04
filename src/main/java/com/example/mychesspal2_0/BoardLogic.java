@@ -1,6 +1,42 @@
 package com.example.mychesspal2_0;
 
 public class BoardLogic {
+    private int[][] board = new int[8][8];
+
+
+
+    public boolean isFull(int x, int y){
+        if(board[x][y]==0){
+            return false;
+        }
+        return true;
+    }
+    public void fillBoard(){
+        //Fill 1st row
+        board[0][0] = 4;
+        board[1][0] = 2;
+        board[2][0] = 3;
+        board[3][0] = 5;
+        board[4][0] = 6;
+        board[5][0] = 3;
+        board[6][0] = 2;
+        board[7][0] = 4;
+//Fill 8th row
+        board[0][7] = -4;
+        board[1][7] = -2;
+        board[2][7] = -3;
+        board[3][7] = -5;
+        board[4][7] = -6;
+        board[5][7] = -3;
+        board[6][7] = -2;
+        board[7][7] = -4;
+//Fill pawns
+        for(int i = 0; i<board.length; i++) {
+            board[i][1]= 1;
+            board[i][6]= -1;
+        }
+    }
+
     public boolean legalMove(int piece, int iX, int iY, int tX, int tY) {
         if (piece == 1) {return whitePawnLegalMove(iX, iY, tX, tY);}
         if (piece == -1) {return blackPawnLegalMove(iX, iY, tX, tY);}
@@ -45,7 +81,7 @@ public class BoardLogic {
             if (iY - 1 == tY) {
                 return true;
             }
-            if (()) {
+            if () {
                 return true;
             }
         }
@@ -66,7 +102,7 @@ public class BoardLogic {
             if (iY + 1 == tY) {
                 return true;
             }
-            if (iY + 1 == tY && ) {
+            if () {
                 return true;
             }
         }
