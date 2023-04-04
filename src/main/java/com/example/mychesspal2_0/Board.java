@@ -16,7 +16,7 @@ public class Board extends BorderPane {
     private static final int BOARD_SIZE = 8;
 
 
-    public Board(){
+    public Board() {
 
         Button backBtn = new Button("Back");
         backBtn.setMaxSize(75, 50);
@@ -45,8 +45,6 @@ public class Board extends BorderPane {
         }
 
         setCenter(gridPane);
-
-
 
 
     }
