@@ -57,30 +57,6 @@ public class BoardLogic {
     }
 
     private boolean rookLegalMove(int iX, int iY, int tX, int tY, int color) {
-        if(iX != tX && iY != tY){
-            return false;
-        }
-        if(iX == tX && iY == tY){
-            return false;
-        }
-        if(iX==tX){
-            if(tY>iY){
-                for(int i = iY+1; i<= tY; i++){
-                    if(board[iX][i]<0 && color < 0 || board[iX][i] >0 && color > 0){
-                        return false;
-                    }
-                }
-                return true;
-            }
-            if(tY<iY){
-                for(int i = iY-1; i>= tY; i--){
-                    if(board[iX][i]<0 && color < 0 || board[iX][i] >0 && color > 0){
-                        return false;
-                    }
-                }
-                return true;
-            }
-        }private boolean rookLegalMove(int iX, int iY, int tX, int tY, int color) {
             if(iX != tX && iY != tY){
                 return false;
             }
@@ -125,26 +101,6 @@ public class BoardLogic {
             }
             return false;
         }
-        if(iY == tY){
-            if(tX>iX){
-                for(int i = iX+1; i<= tX; i++){
-                    if(board[i][tY]<0 && color < 0 || board[i][tY] >0 && color > 0){
-                        return false;
-                    }
-                }
-                return true;
-            }
-            if(tX<iX){
-                for(int i = iX-1; i>= tX; i--){
-                    if(board[i][tY]<0 && color < 0 || board[i][tY] >0 && color > 0){
-                        return false;
-                    }
-                }
-                return true;
-            }
-        }
-        return false;
-    }
 
     private boolean bishopLegalMove(int iX, int iY, int tX, int tY, int color) {
 
