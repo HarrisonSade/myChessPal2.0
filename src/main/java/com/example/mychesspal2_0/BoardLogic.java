@@ -40,11 +40,16 @@ public class BoardLogic {
     public boolean legalMove(int piece, int iX, int iY, int tX, int tY) {
         if (piece == 1) {return whitePawnLegalMove(iX, iY, tX, tY);}
         if (piece == -1) {return blackPawnLegalMove(iX, iY, tX, tY);}
-        if (piece == Math.abs(2)) {return knightLegalMove(iX, iY, tX, tY);}
-        if (piece == Math.abs(3)) {return bishopLegalMove(iX, iY, tX, tY);}
-        if (piece == Math.abs(4)) {return rookLegalMove(iX, iY, tX, tY);}
-        if (piece == Math.abs(5)) {return queenLegalMove(iX, iY, tX, tY);}
-        if (piece == Math.abs(6)) {return kingLegalMove(iX, iY, tX, tY);}
+        if (piece == 2) {return knightLegalMove(iX, iY, tX, tY, 1);}
+        if (piece == -2) {return knightLegalMove(iX, iY, tX, tY, -1);}
+        if (piece == 3) {return bishopLegalMove(iX, iY, tX, tY, 1);}
+        if (piece == -3) {return bishopLegalMove(iX, iY, tX, tY, -1);}
+        if (piece == 4) {return rookLegalMove(iX, iY, tX, tY, 1);}
+        if (piece == -4) {return rookLegalMove(iX, iY, tX, tY, -1);}
+        if (piece == 5) {return queenLegalMove(iX, iY, tX, tY, 1);}
+        if (piece == -5) {return queenLegalMove(iX, iY, tX, tY, -1);}
+        if (piece == 6) {return kingLegalMove(iX, iY, tX, tY, 1);}
+        if (piece == -6) {return kingLegalMove(iX, iY, tX, tY, -1);}
         return false;
     }
 
