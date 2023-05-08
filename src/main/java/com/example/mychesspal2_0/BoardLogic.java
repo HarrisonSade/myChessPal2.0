@@ -58,7 +58,23 @@ public class BoardLogic {
     }
 
     private boolean kingLegalMove(int iX, int iY, int tX, int tY, int color) {
+        // Check that the target position is within the bounds of the board
+        if (tX < 0 || tX > 7 || tY < 0 || tY > 7) {
+            return false;
+        }
 
+        // Check that the king is only moving one square in any direction
+        // dx = distance piece is moving along x axis
+        // dy = distance piece is moving along y axis
+        int dx = Math.abs(tX - iX);
+        int dy = Math.abs(tY - iY);
+        if (dx > 1 || dy > 1) {
+            return false;
+        }
+
+        // still need to check if king is moving into check
+
+        return true;
     }
 
     private boolean queenLegalMove(int iX, int iY, int tX, int tY, int color) {
