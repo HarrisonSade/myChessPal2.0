@@ -55,5 +55,60 @@ public class openingLessons extends BorderPane {
             }
         });
 
+        london.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                London london = new London();
+                Stage s = (Stage) openingLessons.this.getScene().getWindow();
+                Scene londonScene = new Scene(london, s.getWidth(), s.getHeight());
+                s.setScene(londonScene);
+                s.setTitle("The London System");
+            }
+        });
+
+        vienna.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Vienna vienna = new Vienna();
+                Stage s = (Stage) openingLessons.this.getScene().getWindow();
+                Scene viennaScene = new Scene(vienna, s.getWidth(), s.getHeight());
+                s.setScene(viennaScene);
+                s.setTitle("The Vienna");
+            }
+        });
+
+        qGambit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                queensGambit qGambit = new queensGambit();
+                Stage s = (Stage) openingLessons.this.getScene().getWindow();
+                Scene qGambitScene = new Scene(qGambit, s.getWidth(), s.getHeight());
+                s.setScene(qGambitScene);
+                s.setTitle("The Queens Gambit");
+            }
+        });
+
+        friedLiver.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                friedLiver friedLiver = new friedLiver();
+                Stage s = (Stage) openingLessons.this.getScene().getWindow();
+                Scene friedLiverScene = new Scene(friedLiver, s.getWidth(), s.getHeight());
+                s.setScene(friedLiverScene);
+                s.setTitle("The London System");
+            }
+        });
+
+        kGambit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                kingsGambit kingsGambit = new kingsGambit();
+                Stage s = (Stage) openingLessons.this.getScene().getWindow();
+                Scene kGambitScene = new Scene(kingsGambit, s.getWidth(), s.getHeight());
+                s.setScene(kGambitScene);
+                s.setTitle("The Kings Gambit");
+            }
+        });
+
     }
 }
