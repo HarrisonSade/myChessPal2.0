@@ -40,11 +40,20 @@ public class BoardLogic {
     public boolean legalMove(int piece, int iX, int iY, int tX, int tY) {
         if (piece == 1) {return whitePawnLegalMove(iX, iY, tX, tY);}
         if (piece == -1) {return blackPawnLegalMove(iX, iY, tX, tY);}
-        if (piece == Math.abs(2)) {return knightLegalMove(iX, iY, tX, tY);}
-        if (piece == Math.abs(3)) {return bishopLegalMove(iX, iY, tX, tY);}
-        if (piece == Math.abs(4)) {return rookLegalMove(iX, iY, tX, tY);}
-        if (piece == Math.abs(5)) {return queenLegalMove(iX, iY, tX, tY);}
-        if (piece == Math.abs(6)) {return kingLegalMove(iX, iY, tX, tY);}
+
+        int color = 0;
+        if (piece < 0) {
+            color = -1;
+        }
+        else {
+            color = 1;
+        }
+
+        if (piece == Math.abs(2)) {return knightLegalMove(iX, iY, tX, tY, color);}
+        if (piece == Math.abs(3)) {return bishopLegalMove(iX, iY, tX, tY, color);}
+        if (piece == Math.abs(4)) {return rookLegalMove(iX, iY, tX, tY, color);}
+        if (piece == Math.abs(5)) {return queenLegalMove(iX, iY, tX, tY, color);}
+        if (piece == Math.abs(6)) {return kingLegalMove(iX, iY, tX, tY, color);}
         return false;
     }
 
@@ -102,27 +111,37 @@ public class BoardLogic {
             return false;
         }
 
+
     private boolean bishopLegalMove(int iX, int iY, int tX, int tY, int color) {
 
     }
 
     private boolean knightLegalMove(int iX, int iY, int tX, int tY, int color) {
-
+        if (Math.abs(iX-tX) == 2 && Math.abs(iY-tY) == 1) {
+            return true;
+        }
+        return false;
     }
 
     private boolean blackPawnLegalMove(int iX, int iY, int tX, int tY) {
+        // forward movement
         if (iX == tX) {
+            // one step forward
             if (iY - 1 == tY) {
                 return true;
             }
+            // two steps forward
             if (iY == 6 && tY == 4) {
                 return true;
             }
         }
+        // captures
         if (Math.abs(iX-tX) == 1) {
+            // normal captures
             if (iY - 1 == tY) {
                 return true;
             }
+            // en passant
             if (iY - 1 == tY && iY == 3 && board[tX][iY] == 1) {
                 board[tX][iY] = 0;
                 return true;
@@ -133,18 +152,24 @@ public class BoardLogic {
 
 
     private boolean whitePawnLegalMove(int iX, int iY, int tX, int tY) {
+        // forward movement
         if (iX == tX) {
+            // one step forward
             if (iY + 1 == tY) {
                 return true;
             }
+            // two steps forward
             if (iY == 1 && tY == 3) {
                 return true;
             }
         }
+        // captures
         if (Math.abs(iX-tX) == 1) {
-            if (iY + 1 == tY) {
+            // normal capture
+            if (iY + 1 == tY && board[tX][tY] < 0) {
                 return true;
             }
+            // en passant
             if (iY + 1 == tY && iY == 4 && board[tX][iY] == -1) {
                 board[tX][iY] = 0;
                 return true;
