@@ -58,11 +58,14 @@ public class BoardLogic {
     }
 
     private boolean kingLegalMove(int iX, int iY, int tX, int tY, int color) {
-
+        return false;
     }
 
     private boolean queenLegalMove(int iX, int iY, int tX, int tY, int color) {
-
+        if (bishopLegalMove(iX, iY, tX, tY, color) || rookLegalMove(iX, iY, tX, tY, color)) {
+            return true;
+        }
+        return false;
     }
 
     private boolean rookLegalMove(int iX, int iY, int tX, int tY, int color) {
@@ -114,11 +117,20 @@ public class BoardLogic {
 
     private boolean bishopLegalMove(int iX, int iY, int tX, int tY, int color) {
 
+        return false;
     }
 
     private boolean knightLegalMove(int iX, int iY, int tX, int tY, int color) {
-        if (Math.abs(iX-tX) == 2 && Math.abs(iY-tY) == 1) {
-            return true;
+        if ((Math.abs(iX-tX) == 2 && Math.abs(iY-tY) == 1) || (Math.abs(iX-tX) == 1 && Math.abs(iY-tY) == 2)) {
+            if (board[tX][tY] == 0) {
+                return true;
+            }
+            if (board[iX][iY] > 0 && board[tX][tY] < 0) {
+                return true;
+            }
+            if (board[iX][iY] < 0 && board[tX][tY] > 0) {
+                return true;
+            }
         }
         return false;
     }
