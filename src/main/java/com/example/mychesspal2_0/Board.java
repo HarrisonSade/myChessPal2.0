@@ -71,9 +71,9 @@ public class Board extends BorderPane {
                 } else if (row == 0 && (col == 2 || col == 5)) {
                     imageView.setImage(new Image("white_bishop.png"));
                 } else if (row == 0 && col == 3) {
-                    imageView.setImage(new Image("white_queen.png"));
-                } else if (row == 0 && col == 4) {
                     imageView.setImage(new Image("white_king.png"));
+                } else if (row == 0 && col == 4) {
+                    imageView.setImage(new Image("white_queen.png"));
                 } else if (row == 1) {
                     imageView.setImage(new Image("white_pawn.png"));
                 } else if (row == 6) {
@@ -85,9 +85,9 @@ public class Board extends BorderPane {
                 } else if (row == 7 && (col == 2 || col == 5)) {
                     imageView.setImage(new Image("black_bishop.png"));
                 } else if (row == 7 && col == 3) {
-                    imageView.setImage(new Image("black_queen.png"));
-                } else if (row == 7 && col == 4) {
                     imageView.setImage(new Image("black_king.png"));
+                } else if (row == 7 && col == 4) {
+                    imageView.setImage(new Image("black_queen.png"));
                 }
                 gridPane.add(stackPane, col, row);
             }
