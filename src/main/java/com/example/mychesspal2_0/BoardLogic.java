@@ -78,25 +78,7 @@ public class BoardLogic {
     }
 
     private boolean queenLegalMove(int iX, int iY, int tX, int tY, int color) {
-        // Check that the target position is within the bounds of the board
-        if (tX < 0 || tX > 7 || tY < 0 || tY > 7) {
-            return false;
-        }
-
-        // Check that the queen is moving in a straight line (either horizontally, vertically, or diagonally)
-        int dx = Math.abs(tX - iX);
-        int dy = Math.abs(tY - iY);
-        if (dx != 0 && dy != 0 && dx != dy) {
-            return false;
-        }
-
-        // check that no pieces are in way of target position
-
-        //check that no friendly pieces are in the way
-
-
-
-        return true;
+      return (bishopLegalMove(iX, iY, tX, tY, color) || rookLegalMove(iX, iY, tX, tY, color));
     }
 
     private boolean rookLegalMove(int iX, int iY, int tX, int tY, int color) {
@@ -147,7 +129,7 @@ public class BoardLogic {
 
 
     private boolean bishopLegalMove(int iX, int iY, int tX, int tY, int color) {
-        return false;
+    return true;
     }
 
     private boolean knightLegalMove(int iX, int iY, int tX, int tY, int color) {
