@@ -129,12 +129,58 @@ public class BoardLogic {
 
 
     private boolean bishopLegalMove(int iX, int iY, int tX, int tY, int color) {
-    return true;
+        // is the move diagonal?
+        if (iX == tX || iY == tY || Math.abs(iX-tX) != Math.abs(iY-tY)) {
+            return false;
+        }
+
+        // which way should the while loop iterate?
+        int x = iX;
+        int y = iY;
+        int deltaX = 0;
+        int deltaY = 0;
+        if (tX > iX) {
+            deltaX = 1;
+        }
+        else {
+            deltaX = -1;
+        }
+        if (tY > iY) {
+            deltaY = 1;
+        }
+        else {
+            deltaY = -1;
+        }
+        x += deltaX;
+        y += deltaY;
+
+        // is there a piece in the path of the bishop?
+        while (x != tX && y != tY) {
+            if (board[x][y] != 0) {
+                return false;
+            }
+            x += deltaX;
+            y += deltaY;
+        }
+
+        // is there a same color piece on the square?
+        if ((color < 0 && board[tX][tY] < 0) || (color > 0 && board[tX][tY] > 0)) {
+            return false;
+        }
+
+        // all conditions met
+        return true;
     }
 
     private boolean knightLegalMove(int iX, int iY, int tX, int tY, int color) {
+        // two horizontal, one vertical
         if (Math.abs(iX-tX) == 2 && Math.abs(iY-tY) == 1) {
-            return true;
+            if (color == -1 && board[tX][tY] >= 0) {
+                return true;
+            }
+            else if (color == 1 && board[tX][tY] <= 0) {
+                return true;
+            }
         }
         return false;
     }
