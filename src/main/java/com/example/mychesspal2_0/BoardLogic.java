@@ -147,7 +147,7 @@ public class BoardLogic {
 
 
     private boolean bishopLegalMove(int iX, int iY, int tX, int tY, int color) {
-
+        return false;
     }
 
     private boolean knightLegalMove(int iX, int iY, int tX, int tY, int color) {
