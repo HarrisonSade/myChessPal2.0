@@ -3,7 +3,9 @@ package com.example.mychesspal2_0;
 public class BoardLogic {
     private int[][] board = new int[8][8];
 
-
+    public BoardLogic(){
+        fillBoard();
+    }
 
     public boolean isFull(int x, int y){
         if(board[x][y]==0){
@@ -35,6 +37,10 @@ public class BoardLogic {
             board[i][1]= 1;
             board[i][6]= -1;
         }
+    }
+
+    public void move(){
+
     }
 
     public boolean legalMove(int piece, int iX, int iY, int tX, int tY) {
@@ -71,8 +77,23 @@ public class BoardLogic {
         if (dx > 1 || dy > 1) {
             return false;
         }
+        //own capture check
+        if(board[tX][tY] < 0 && color<0 || board[tX][tY] > 0 && color>0){
+            return false;
+        }
+        //check if moving into check
+        if(color < 0){
+            if(blackIsInCheck(tX, tY)){
+                return false;
+            }
+        }
+        if(color > 0){
+            if(whiteIsInCheck(tX, tY)){
+               return false;
+            }
+        }
 
-        // still need to check if king is moving into check
+
 
         return true;
     }
@@ -235,6 +256,32 @@ public class BoardLogic {
             if (iY + 1 == tY && iY == 4 && board[tX][iY] == -1) {
                 board[tX][iY] = 0;
                 return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean whiteIsInCheck(int x, int y){
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j< board[i].length; j++){
+                if(board[i][j] < 0 && (x!= i && y!=j)){
+                    if(legalMove(board[i][j], i, j, x, y)){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean blackIsInCheck(int x, int y){
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j< board[i].length; j++){
+                if(board[i][j] > 0 && (x!= i && y!=j)){
+                    if(legalMove(board[i][j], i, j, x, y)){
+                        return true;
+                    }
+                }
             }
         }
         return false;
