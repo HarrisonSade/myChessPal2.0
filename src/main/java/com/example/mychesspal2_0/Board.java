@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 public class Board extends BorderPane {
 
     private static final int BOARD_SIZE = 8;
-    Rectangle[][] squares = new Rectangle[BOARD_SIZE][BOARD_SIZE];
+    Button[][] squares = new Button[BOARD_SIZE][BOARD_SIZE];
 
     public Board() {
 
@@ -49,15 +49,23 @@ public class Board extends BorderPane {
         //    }
         //}
 
+
+
+
         //new for loop for the board
         for (int row = 0; row < BOARD_SIZE; row++) {
             for (int col = 0; col < BOARD_SIZE; col++) {
-                Rectangle rect = new Rectangle(75, 75, (row + col) % 2 == 0 ? Color.WHITE : Color.LIGHTGRAY);
-                squares[row][col] = rect;
+                Button button = new Button();
+                button.setPrefSize(75,75);
+                button.setStyle("-fx-background-color: " + ((row + col) % 2 == 0 ? "white" : "lightgray"));
+                squares[row][col] = button;
+
+                //Rectangle rect = new Rectangle(75, 75, (row + col) % 2 == 0 ? Color.WHITE : Color.LIGHTGRAY);
+                //squares[row][col] = rect;
 
                 // Create ImageView and add it to a StackPane
                 StackPane stackPane = new StackPane();
-                stackPane.getChildren().add(rect);
+                stackPane.getChildren().add(button);
                 ImageView imageView = new ImageView();
                 imageView.setFitWidth(60);
                 imageView.setFitHeight(60);
@@ -89,6 +97,15 @@ public class Board extends BorderPane {
                 } else if (row == 7 && col == 4) {
                     imageView.setImage(new Image("black_queen.png"));
                 }
+
+                int testRow = row;
+                int testCol = col;
+                button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent actionEvent) {
+                        System.out.println("Button Clicked: Row = " + testRow + " Col = " + testCol);
+                    }
+                });
                 gridPane.add(stackPane, col, row);
             }
         }
