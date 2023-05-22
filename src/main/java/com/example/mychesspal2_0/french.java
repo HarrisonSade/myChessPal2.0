@@ -11,7 +11,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-public class french extends BorderPane {
+public class french extends Board {
     private static final int BOARD_SIZE = 8;
 
     public french(){

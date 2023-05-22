@@ -2,6 +2,7 @@ package com.example.mychesspal2_0;
 
 public class BoardLogic {
     private int[][] board = new int[8][8];
+    private int turn = 1;
 
     public BoardLogic(){
         fillBoard();
@@ -39,8 +40,14 @@ public class BoardLogic {
         }
     }
 
-    public void move(){
-
+    public boolean move(int piece, int iX, int iY, int tX, int tY){
+        if (legalMove(piece, iX, iY, tX, tY)) {
+            board[tX][tY] = piece;
+            board[iX][iY] = 0;
+            turn = -turn;
+            return true;
+        }
+        return false;
     }
 
     public boolean legalMove(int piece, int iX, int iY, int tX, int tY) {
