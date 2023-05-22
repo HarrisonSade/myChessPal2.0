@@ -40,18 +40,6 @@ public class Board extends BorderPane {
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);
 
-        //OLD FOR LOOP IS NOT NEEDED ANYMORE
-        //is here below for reference:
-        //for (int row = 0; row < BOARD_SIZE; row++) {
-        //   for (int col = 0; col < BOARD_SIZE; col++) {
-        //        Rectangle rect = new Rectangle(75, 75, (row + col) % 2 == 0 ? Color.WHITE : Color.LIGHTGRAY);
-        //        gridPane.add(rect, col, row);
-        //    }
-        //}
-
-
-
-
         //new for loop for the board
         for (int row = 0; row < BOARD_SIZE; row++) {
             for (int col = 0; col < BOARD_SIZE; col++) {
