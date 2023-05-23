@@ -15,6 +15,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -70,16 +72,44 @@ public class London extends Board {
                         // Add your code here to move the pawn to d4
 
                         // Clear the current position of the pawn
-                        squares[1][3].setText("");
+                        squares[1][4].setText("");
 
                         // Update the new position of the pawn to d4
-                        squares[3][3].setText("♙"); // Use the appropriate Unicode character for the pawn
+                        squares[3][4].setText("♙"); // Use the appropriate Unicode character for the pawn
                         break;
                     case 2:
                         // Second click: Perform a different action
                         // Add your code here for the second click
+                        squares[6][4].setText("");
+                        squares[4][4].setText("♟︎");
                         break;
                     // Add cases for subsequent clicks as needed
+
+                    case 3:
+                        squares[0][1].setText("");
+                        squares[2][2].setText("♘");
+                        break;
+
+                    case 4:
+                        squares[7][1].setText("");
+                        squares[5][2].setText("♞");
+                        break;
+
+                    case 5:
+                        squares[0][5].setText("");
+                        squares[3][2].setText("♗");
+                        break;
+
+                    case 6:
+
+                        break;
+                    case 7:
+
+                    case 8:
+
+                    case 9:
+
+                    case 10:
 
                     default:
                         // Default action for any additional clicks
@@ -94,6 +124,7 @@ public class London extends Board {
                 Button button = new Button();
                 button.setPrefSize(75,75);
                 button.setStyle("-fx-background-color: " + ((row + col) % 2 == 0 ? "white" : "lightgray"));
+                button.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 32));
                 squares[row][col] = button;
 
                 //Rectangle rect = new Rectangle(75, 75, (row + col) % 2 == 0 ? Color.WHITE : Color.LIGHTGRAY);
@@ -109,29 +140,29 @@ public class London extends Board {
 
                 // Set the image of the ImageView to the corresponding chess piece
                 if (row == 0 && (col == 0 || col == 7)) {
-                    imageView.setImage(new Image("white_rook.png"));
+                    squares[row][col].setText("♖");
                 } else if (row == 0 && (col == 1 || col == 6)) {
-                    imageView.setImage(new Image("white_knight.png"));
+                    squares[row][col].setText("♘");
                 } else if (row == 0 && (col == 2 || col == 5)) {
-                    imageView.setImage(new Image("white_bishop.png"));
+                    squares[row][col].setText("♗");
                 } else if (row == 0 && col == 3) {
-                    imageView.setImage(new Image("white_king.png"));
+                    squares[row][col].setText("♔");
                 } else if (row == 0 && col == 4) {
-                    imageView.setImage(new Image("white_queen.png"));
+                    squares[row][col].setText("♕");
                 } else if (row == 1) {
-                    imageView.setImage(new Image("white_pawn.png"));
+                    squares[row][col].setText("♙");
                 } else if (row == 6) {
-                    imageView.setImage(new Image("black_pawn.png"));
+                    squares[row][col].setText("♟︎");
                 } else if (row == 7 && (col == 0 || col == 7)) {
-                    imageView.setImage(new Image("black_rook.png"));
+                    squares[row][col].setText("♜");
                 } else if (row == 7 && (col == 1 || col == 6)) {
-                    imageView.setImage(new Image("black_knight.png"));
+                    squares[row][col].setText("♞");
                 } else if (row == 7 && (col == 2 || col == 5)) {
-                    imageView.setImage(new Image("black_bishop.png"));
+                    squares[row][col].setText("♝");
                 } else if (row == 7 && col == 3) {
-                    imageView.setImage(new Image("black_king.png"));
+                    squares[row][col].setText("♚");
                 } else if (row == 7 && col == 4) {
-                    imageView.setImage(new Image("black_queen.png"));
+                    squares[row][col].setText("♛");
                 }
 
                 int testRow = row;
