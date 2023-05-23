@@ -13,6 +13,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 public class caro extends BorderPane {
@@ -57,6 +60,7 @@ public class caro extends BorderPane {
                 button.setPrefSize(75,75);
                 button.setStyle("-fx-background-color: " + ((row + col) % 2 == 0 ? "white" : "lightgray"));
                 squares[row][col] = button;
+                button.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 32));
 
                 // Create ImageView and add it to a StackPane
                 StackPane stackPane = new StackPane();
