@@ -23,6 +23,8 @@ public class London extends Board {
     private static final int BOARD_SIZE = 8;
     Button[][] squares = new Button[BOARD_SIZE][BOARD_SIZE];
 
+    private int clickCount = 0;
+
 
 
     public London() {
@@ -46,21 +48,45 @@ public class London extends Board {
         nextMove.setPadding(new Insets(30));
         this.setBottom(nextMove);
 
-        nextMove.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-
-            }
-        });
-
         Text instructions = new Text("The first move of the London System is white moves queens pawn to D4");
         instructions.setFont(Font.font(20));
 
         HBox things = new HBox(backBtn, instructions);
+        things.setSpacing(40);
         this.setTop(things);
 
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);
+
+        nextMove.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                clickCount++;
+
+                // Perform different actions based on the click count
+                switch (clickCount) {
+                    case 1:
+                        // First click: Move the queen's pawn to d4
+                        // Add your code here to move the pawn to d4
+
+                        // Clear the current position of the pawn
+                        squares[1][3].setText("");
+
+                        // Update the new position of the pawn to d4
+                        squares[3][3].setText("♙"); // Use the appropriate Unicode character for the pawn
+                        break;
+                    case 2:
+                        // Second click: Perform a different action
+                        // Add your code here for the second click
+                        break;
+                    // Add cases for subsequent clicks as needed
+
+                    default:
+                        // Default action for any additional clicks
+                        break;
+                }
+            }
+        });
 
         //new for loop for the board
         for (int row = 0; row < BOARD_SIZE; row++) {
