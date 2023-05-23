@@ -202,7 +202,7 @@ public class BoardLogic {
 
     private boolean knightLegalMove(int iX, int iY, int tX, int tY, int color) {
         // two horizontal, one vertical
-        if (Math.abs(iX-tX) == 2 && Math.abs(iY-tY) == 1) {
+        if ((Math.abs(iX-tX) == 2 && Math.abs(iY-tY) == 1) || (Math.abs(iX-tX) == 1 && Math.abs(iY-tY) == 2)) {
             if (color == -1 && board[tX][tY] >= 0) {
                 return true;
             }
