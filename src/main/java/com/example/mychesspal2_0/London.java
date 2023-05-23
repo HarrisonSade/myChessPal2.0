@@ -26,11 +26,9 @@ public class London extends Board {
 
 
     public London() {
-        super();
 
         Button backBtn = new Button("Back");
         backBtn.setMaxSize(75, 50);
-        this.setTop(backBtn);
 
         backBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -48,10 +46,17 @@ public class London extends Board {
         nextMove.setPadding(new Insets(30));
         this.setBottom(nextMove);
 
-        Text instructions = new Text("");
+        nextMove.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+            }
+        });
+
+        Text instructions = new Text("The first move of the London System is white moves queens pawn to D4");
         instructions.setFont(Font.font(20));
 
-        HBox things = new HBox(instructions);
+        HBox things = new HBox(backBtn, instructions);
         this.setTop(things);
 
         GridPane gridPane = new GridPane();
