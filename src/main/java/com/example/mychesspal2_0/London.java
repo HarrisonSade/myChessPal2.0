@@ -78,6 +78,8 @@ public class London extends Board {
                         squares[3][4].setText("♙"); // Use the appropriate Unicode character for the pawn
                         break;
                     case 2:
+
+                        instructions.setText("Now, black might respond with pawn to d5 ");
                         // Second click: Perform a different action
                         // Add your code here for the second click
                         squares[6][4].setText("");
@@ -86,30 +88,89 @@ public class London extends Board {
                     // Add cases for subsequent clicks as needed
 
                     case 3:
+                        instructions.setText("You will now respond with knight to f3");
                         squares[0][1].setText("");
                         squares[2][2].setText("♘");
                         break;
 
                     case 4:
+                        instructions.setText("Black may now mirror your move with knight to f6");
                         squares[7][1].setText("");
                         squares[5][2].setText("♞");
                         break;
 
                     case 5:
+                        instructions.setText("The next step is bringing your queens side bishop in front of your knight");
                         squares[0][5].setText("");
                         squares[3][2].setText("♗");
                         break;
 
                     case 6:
-
+                        instructions.setText("Black can repspond with pawn to e6");
+                        //pawn to e6
+                        squares[6][3].setText("");
+                        squares[5][3].setText("♟︎");
                         break;
                     case 7:
-
+                        instructions.setText("You will now play pawn to e3");
+                        //pawn to e3
+                        squares[1][3].setText("");
+                        squares[2][3].setText("♙");
+                        break;
                     case 8:
+                        instructions.setText("Black could then play knight e6");
+                        //knight e6
+                        squares[7][6].setText("");
+                        squares[5][5].setText("♞");
+                        break;
 
                     case 9:
+                        instructions.setText("You will not play bishop to d3");
+                        //bishop to d3
+                        squares[0][2].setText("");
+                        squares[2][4].setText("♗");
+                        break;
 
                     case 10:
+                        instructions.setText("Black might possibly play bishop to d7");
+                        squares[7][5].setText("");
+                        squares[6][4].setText("♝");
+                        break;
+
+                    case 11:
+                        instructions.setText("You will now play knight to d2");
+                        squares[0][6].setText("");
+                        squares[1][4].setText("♘");
+                        break;
+
+                    case 12:
+                        instructions.setText("This could be followed up with bishop to d7");
+                        squares[7][2].setText("");
+                        squares[6][3].setText("♝");
+                        break;
+
+                    case 13:
+                        instructions.setText("This will be followed up with pawn to c3");
+                        squares[1][5].setText("");
+                        squares[2][5].setText("♙");
+                        break;
+
+                    case 14:
+                        instructions.setText("Now lets say black castles on kings side");
+                        //kings side castle
+                        squares[7][3].setText("");
+                        squares[7][1].setText("♚");
+                        squares[7][0].setText("");
+                        squares[7][2].setText("♜");
+                        break;
+
+                    case 15:
+                        instructions.setText("You will officially finish the London system with a kings side castle");
+                        squares[0][3].setText("");
+                        squares[0][1].setText("♔");
+                        squares[0][0].setText("");
+                        squares[0][2].setText("♖");
+                        break;
 
                     default:
                         // Default action for any additional clicks

@@ -95,7 +95,7 @@ public class openingLessons extends BorderPane {
                 Stage s = (Stage) openingLessons.this.getScene().getWindow();
                 Scene friedLiverScene = new Scene(friedLiver, s.getWidth(), s.getHeight());
                 s.setScene(friedLiverScene);
-                s.setTitle("The London System");
+                s.setTitle("The Fried Liver");
             }
         });
 
