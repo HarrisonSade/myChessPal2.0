@@ -8,10 +8,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class caro extends BorderPane {
@@ -25,12 +27,18 @@ public class caro extends BorderPane {
     public caro(){
         Button backBtn = new Button("Back");
         backBtn.setMaxSize(75, 50);
-        this.setTop(backBtn);
 
         Button nextMove = new Button("Next Move");
         nextMove.setMaxSize(200, 200);
         nextMove.setPadding(new Insets(30));
         this.setBottom(nextMove);
+
+        Text instructions = new Text("The first move of the Caro Kann is white's king pawn to E4");
+        instructions.setFont(Font.font(20));
+
+        HBox things = new HBox(backBtn, instructions);
+        things.setSpacing(40);
+        this.setTop(things);
 
         backBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -99,22 +107,18 @@ public class caro extends BorderPane {
                         // Perform different actions based on the click count
                         switch (clickCount) {
                             case 1:
-                                // First click: Move the queen's pawn to d4
-                                // Add your code here to move the pawn to d4
 
-                                // Clear the current position of the pawn
                                 squares[1][3].setText("");
 
-                                // Update the new position of the pawn to d4
+
                                 squares[3][3].setText("♙"); // Use the appropriate Unicode character for the pawn
                                 break;
                             case 2:
-                                // Second click: Perform a different action
-                                // Add your code here for the second click
+
                                 squares[6][5].setText("");
                                 squares[5][5].setText("♟︎");
                                 break;
-                            // Add cases for subsequent clicks as needed
+
 
                             case 3:
                                 squares[1][4].setText("");

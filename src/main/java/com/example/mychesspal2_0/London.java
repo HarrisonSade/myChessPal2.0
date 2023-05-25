@@ -47,13 +47,12 @@ public class London extends Board {
 
         Button nextMove = new Button("Next Move");
         nextMove.setMaxSize(200, 200);
-        nextMove.setPadding(new Insets(30));
-        this.setBottom(nextMove);
+
 
         Text instructions = new Text("The first move of the London System is white moves queens pawn to D4");
         instructions.setFont(Font.font(20));
 
-        HBox things = new HBox(backBtn, instructions);
+        HBox things = new HBox(backBtn, instructions, nextMove);
         things.setSpacing(40);
         this.setTop(things);
 
