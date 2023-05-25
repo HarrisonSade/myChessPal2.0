@@ -67,7 +67,7 @@ public class queensGambit extends BorderPane {
                 // Perform different actions based on the click count
                 switch (clickCount) {
                     case 1:
-                        instructions.setText("The first move of the Vienna is pawn to d4");
+                        instructions.setText("The first move of the Queens Gambit is pawn to d4");
                         squares[1][4].setText("");
                         squares[3][4].setText("♙");
 
@@ -80,7 +80,7 @@ public class queensGambit extends BorderPane {
                         break;
 
                     case 3:
-                        instructions.setText("The Vienna opening will now be complete with pawn to c4");
+                        instructions.setText("The Queens Gambit opening will now be complete with pawn to c4");
                         squares[1][5].setText("");
                         squares[3][5].setText("♙");
                         break;

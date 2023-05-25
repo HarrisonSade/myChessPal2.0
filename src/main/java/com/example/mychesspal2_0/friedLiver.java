@@ -49,7 +49,7 @@ public class friedLiver extends BorderPane {
         nextMove.setPadding(new Insets(30));
         this.setBottom(nextMove);
 
-        Text instructions = new Text("The first move of the Vienna is pawn to e4");
+        Text instructions = new Text("The first move of the Fried Liver is pawn to e4");
         instructions.setFont(Font.font(20));
 
         HBox things = new HBox(backBtn, instructions);
@@ -67,7 +67,7 @@ public class friedLiver extends BorderPane {
                 // Perform different actions based on the click count
                 switch (clickCount) {
                     case 1:
-                        instructions.setText("The first move of the Vienna is pawn to e4");
+                        instructions.setText("The first move of the Fried Liver is pawn to e4");
                         squares[1][3].setText("");
                         squares[3][3].setText("♙");
 

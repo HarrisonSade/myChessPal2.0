@@ -49,7 +49,7 @@ public class kingsGambit extends BorderPane {
         nextMove.setPadding(new Insets(30));
         this.setBottom(nextMove);
 
-        Text instructions = new Text("The first move of the Vienna is pawn to e4");
+        Text instructions = new Text("The first move of the Kings Gambit is pawn to d4");
         instructions.setFont(Font.font(20));
 
         HBox things = new HBox(backBtn, instructions);
