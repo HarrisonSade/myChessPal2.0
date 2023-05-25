@@ -109,25 +109,25 @@ public class scandanavian extends BorderPane {
                 // Perform different actions based on the click count
                 switch (clickCount) {
                     case 1:
-                        instructions.setText("The Scandinavian Defense starts off with the white pawn to e4");
+                        instructions.setText("The Scandinavian Defense starts with white pawn to e4, establishing center");
                         squares[1][3].setText("");
                         squares[3][3].setText("♙");
                         break;
 
                     case 2:
-                        instructions.setText("Black responds with pawn to d5");
+                        instructions.setText("Black responds with pawn to d5, threatening the pawn");
                         squares[6][4].setText("");
                         squares[4][4].setText("♟");
                         break;
 
                     case 3:
-                        instructions.setText("White captures the pawn on d5: exd5");
+                        instructions.setText("White captures the pawn on d5: exd5, exchanging material");
                         squares[3][3].setText("");
                         squares[4][4].setText("♙");
                         break;
 
                     case 4:
-                        instructions.setText("Black captures the pawn on d5 using the queen");
+                        instructions.setText("Black captures the pawn on d5 using the queen, equalizing material");
                         squares[7][4].setText("");
                         squares[4][4].setText("♛");
                         break;

@@ -105,43 +105,43 @@ public class caro extends BorderPane {
                         // Perform different actions based on the click count
                         switch (clickCount) {
                             case 1:
-                                instructions.setText("White starts with pawn to e4");
+                                instructions.setText("White starts with pawn to e4, taking the early center");
                                 squares[1][3].setText("");
                                 squares[3][3].setText("♙");
                                 break;
 
                             case 2:
-                                instructions.setText("Black responds with pawn to c6");
+                                instructions.setText("Black responds with pawn to c6, a setup for a center pawn");
                                 squares[6][5].setText("");
                                 squares[5][5].setText("♟");
                                 break;
 
                             case 3:
-                                instructions.setText("White plays pawn to d4");
+                                instructions.setText("White plays pawn to d4, establishing a strong central presence");
                                 squares[1][4].setText("");
                                 squares[3][4].setText("♙");
                                 break;
 
                             case 4:
-                                instructions.setText("Black plays pawn to d5");
+                                instructions.setText("Black plays pawn to d5, fighting for central control while protected");
                                 squares[6][4].setText("");
                                 squares[4][4].setText("♟");
                                 break;
 
                             case 5:
-                                instructions.setText("White develops the knight to Nc3");
+                                instructions.setText("White develops the knight to Nc3, defending the pawn");
                                 squares[0][6].setText("");
                                 squares[2][5].setText("♘");
                                 break;
 
                             case 6:
-                                instructions.setText("Black takes the  pawn dxe4");
+                                instructions.setText("Black takes the pawn dxe4, fighting white's central control");
                                 squares[4][4].setText("");
                                 squares[3][3].setText("♟");
                                 break;
 
                             case 7:
-                                instructions.setText("White takes the pawn Nxe4");
+                                instructions.setText("White takes the pawn Nxe4, taking back material");
                                 squares[2][5].setText("");
                                 squares[3][3].setText("♘");
                                 break;
