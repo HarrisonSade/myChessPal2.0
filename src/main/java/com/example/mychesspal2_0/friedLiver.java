@@ -128,7 +128,7 @@ public class friedLiver extends BorderPane {
                         break;
 
                     case 11:
-                        instructions.setText("White now scarifices the knight on f7 to finish the Fried Liver");
+                        instructions.setText("White now sacrifices the knight on f7 to finish the Fried Liver");
                         squares[4][1].setText("");
                         squares[6][2].setText("♘");
                         break;

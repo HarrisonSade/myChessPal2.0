@@ -6,13 +6,9 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -20,7 +16,7 @@ import javafx.stage.Stage;
 
 public class caro extends BorderPane {
 
-    private ImageView selectedPiece;
+    private int clickCount = 0;
 
 
     private static final int BOARD_SIZE = 8;
@@ -65,12 +61,9 @@ public class caro extends BorderPane {
                 // Create ImageView and add it to a StackPane
                 StackPane stackPane = new StackPane();
                 stackPane.getChildren().add(button);
-                ImageView imageView = new ImageView();
-                imageView.setFitWidth(60);
-                imageView.setFitHeight(60);
-                stackPane.getChildren().add(imageView);
 
-                // Set the image of the ImageView to the corresponding chess piece
+
+                // Set the image of the button to the corresponding chess piece
                 if (row == 0 && (col == 0 || col == 7)) {
                     squares[row][col].setText("♖");
                 } else if (row == 0 && (col == 1 || col == 6)) {
@@ -97,17 +90,69 @@ public class caro extends BorderPane {
                     squares[row][col].setText("♛");
                 }
 
-                int testRow = row;
-                int testCol = col;
-                button.setOnAction(new EventHandler<ActionEvent>() {
+                gridPane.add(stackPane, col, row);
+                nextMove.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
-                        System.out.println("Button Clicked: Row = " + testRow + " Col = " + testCol);
-                        selectedPiece = imageView; // Assign the clicked ImageView to selectedPiece
+                        clickCount++;
+
+                        // Perform different actions based on the click count
+                        switch (clickCount) {
+                            case 1:
+                                // First click: Move the queen's pawn to d4
+                                // Add your code here to move the pawn to d4
+
+                                // Clear the current position of the pawn
+                                squares[1][3].setText("");
+
+                                // Update the new position of the pawn to d4
+                                squares[3][3].setText("♙"); // Use the appropriate Unicode character for the pawn
+                                break;
+                            case 2:
+                                // Second click: Perform a different action
+                                // Add your code here for the second click
+                                squares[6][5].setText("");
+                                squares[5][5].setText("♟︎");
+                                break;
+                            // Add cases for subsequent clicks as needed
+
+                            case 3:
+                                squares[1][4].setText("");
+                                squares[3][4].setText("♙");
+                                break;
+
+                            case 4:
+                                squares[6][4].setText("");
+                                squares[4][4].setText("♟");
+                                break;
+
+                            case 5:
+                                squares[0][6].setText("");
+                                squares[2][5].setText("♘");
+                                break;
+
+                            case 6:
+                                squares[4][4].setText("");
+                                squares[3][3].setText("♟");
+                                break;
+
+                            case 7:
+                                squares[2][5].setText("");
+                                squares[3][3].setText("♘");
+                                break;
+
+                            case 8:
+
+                            case 9:
+
+                            case 10:
+
+                            default:
+                                // Default action for any additional clicks
+                                break;
+                        }
                     }
                 });
-
-                gridPane.add(stackPane, col, row);
             }
         }
 
