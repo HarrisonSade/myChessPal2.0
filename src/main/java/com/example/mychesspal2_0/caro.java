@@ -30,8 +30,6 @@ public class caro extends BorderPane {
 
         Button nextMove = new Button("Next Move");
         nextMove.setMaxSize(200, 200);
-        nextMove.setPadding(new Insets(30));
-        this.setBottom(nextMove);
 
         Text instructions = new Text("White starts with pawn to e4");
         instructions.setFont(Font.font(20));
@@ -148,6 +146,8 @@ public class caro extends BorderPane {
                                 squares[3][3].setText("♘");
                                 break;
 
+                            case 8:
+                                instructions.setText("You completed the Caro Kann Defense!");
                             default:
                                 // Default action for any additional clicks
                                 break;
