@@ -36,7 +36,7 @@ public class caro extends BorderPane {
         Text instructions = new Text("The first move of the Caro Kann is white's king pawn to E4");
         instructions.setFont(Font.font(20));
 
-        HBox things = new HBox(backBtn, instructions);
+        HBox things = new HBox(backBtn, instructions, nextMove);
         things.setSpacing(40);
         this.setTop(things);
 
@@ -144,12 +144,6 @@ public class caro extends BorderPane {
                                 squares[2][5].setText("");
                                 squares[3][3].setText("♘");
                                 break;
-
-                            case 8:
-
-                            case 9:
-
-                            case 10:
 
                             default:
                                 // Default action for any additional clicks
