@@ -197,7 +197,6 @@ public class friedLiver extends BorderPane {
                 gridPane.add(stackPane, col, row);
             }
         }
+    setCenter(gridPane);
 
-        setCenter(gridPane);
-    }
-}
+    }}
