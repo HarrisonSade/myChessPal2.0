@@ -7,23 +7,31 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 
 public class Board extends BorderPane {
 
     private static final int BOARD_SIZE = 8;
-    Button[][] squares = new Button[BOARD_SIZE][BOARD_SIZE];
+    private Button[][] board;
+    private int sX = -1;
+    private int sY = -1;
+    private BoardLogic boardLogic;
+    private GridPane gridPane;
 
     public Board() {
-
         Button backBtn = new Button("Back");
         backBtn.setMaxSize(75, 50);
         this.setTop(backBtn);
+        boardLogic = new BoardLogic();
 
         backBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -36,72 +44,153 @@ public class Board extends BorderPane {
             }
         });
 
-
-        GridPane gridPane = new GridPane();
+        gridPane = createGridPane();
         gridPane.setAlignment(Pos.CENTER);
+        setCenter(gridPane);
+    }
 
-        //new for loop for the board
+    private GridPane createGridPane() {
+        GridPane gridPane = new GridPane();
+
+        for (int row = 0; row < BOARD_SIZE; row++) {
+            RowConstraints rowConstraints = new RowConstraints();
+            rowConstraints.setPercentHeight(100.0 / BOARD_SIZE);
+            gridPane.getRowConstraints().add(rowConstraints);
+        }
+
+        for (int col = 0; col < BOARD_SIZE; col++) {
+            ColumnConstraints colConstraints = new ColumnConstraints();
+            colConstraints.setPercentWidth(100.0 / BOARD_SIZE);
+            gridPane.getColumnConstraints().add(colConstraints);
+        }
+
+        board = new Button[BOARD_SIZE][BOARD_SIZE];
+
         for (int row = 0; row < BOARD_SIZE; row++) {
             for (int col = 0; col < BOARD_SIZE; col++) {
                 Button button = new Button();
-                button.setPrefSize(75,75);
-                 button.setStyle("-fx-background-color: " + ((row + col) % 2 == 0 ? "white" : "lightgray"));
-                squares[row][col] = button;
+                button.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+                GridPane.setFillHeight(button, true);
+                GridPane.setFillWidth(button, true);
 
-                //Rectangle rect = new Rectangle(75, 75, (row + col) % 2 == 0 ? Color.WHITE : Color.LIGHTGRAY);
-                //squares[row][col] = rect;
+                boolean isDarkSquare = (col + row) % 2 != 0;
+                String backgroundColor = isDarkSquare ? "#A9A9A9" : "#FFFFFF";
+                button.setStyle("-fx-background-color: " + backgroundColor);
+                button.setUserData(new Space(row, col));
+                button.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.DOTTED, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 
-                // Create ImageView and add it to a StackPane
-                StackPane stackPane = new StackPane();
-                stackPane.getChildren().add(button);
-                ImageView imageView = new ImageView();
-                imageView.setFitWidth(60);
-                imageView.setFitHeight(60);
-                stackPane.getChildren().add(imageView);
 
-                // Set the image of the ImageView to the corresponding chess piece
-                if (row == 0 && (col == 0 || col == 7)) {
-                    imageView.setImage(new Image("white_rook.png"));
-                } else if (row == 0 && (col == 1 || col == 6)) {
-                    imageView.setImage(new Image("white_knight.png"));
-                } else if (row == 0 && (col == 2 || col == 5)) {
-                    imageView.setImage(new Image("white_bishop.png"));
-                } else if (row == 0 && col == 3) {
-                    imageView.setImage(new Image("white_king.png"));
-                } else if (row == 0 && col == 4) {
-                    imageView.setImage(new Image("white_queen.png"));
-                } else if (row == 1) {
-                    imageView.setImage(new Image("white_pawn.png"));
-                } else if (row == 6) {
-                    imageView.setImage(new Image("black_pawn.png"));
-                } else if (row == 7 && (col == 0 || col == 7)) {
-                    imageView.setImage(new Image("black_rook.png"));
-                } else if (row == 7 && (col == 1 || col == 6)) {
-                    imageView.setImage(new Image("black_knight.png"));
-                } else if (row == 7 && (col == 2 || col == 5)) {
-                    imageView.setImage(new Image("black_bishop.png"));
-                } else if (row == 7 && col == 3) {
-                    imageView.setImage(new Image("black_king.png"));
-                } else if (row == 7 && col == 4) {
-                    imageView.setImage(new Image("black_queen.png"));
-                }
+                String s = setImageForPiece(boardLogic.get(row, col));
+                button.setText(s);
+                button.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 45));
 
-                int testRow = row;
-                int testCol = col;
-                button.setOnAction(new EventHandler<ActionEvent>() {
+
+
+                button.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
-                    public void handle(ActionEvent actionEvent) {
-                        System.out.println("Button Clicked: Row = " + testRow + " Col = " + testCol);
+                    public void handle(MouseEvent mouseEvent) {
+                        Button clickedButton = (Button) mouseEvent.getSource();
+                        Space space = (Space) clickedButton.getUserData();
+
+                        if (sX < 0 || sY < 0) {
+                            sX = space.col;
+                            sY = space.row;
+                            button.setStyle("-fx-background-color: #E2C3C3");
+
+                        } else {
+                            int piece = boardLogic.get(sY, sX);//6,4
+                            System.out.println(piece + "-" + sX + "-" + sY + "-" + space.col + "-" + space.row);
+
+
+                            if (boardLogic.move(sX, sY, space.col, space.row)==true) {
+
+                                System.out.println("here");
+
+                                updateGraphics();
+
+                            }
+                            else {
+                                System.out.println("else");
+
+                            }
+
+                            if(sX % 2 == 0 && sY % 2 == 0 || sX % 2 == 1 && sY % 2 == 1) {
+                                board[sY][sX].setStyle("-fx-background-color: #FFFFFF");
+                            }
+                            else{
+                                board[sY][sX].setStyle("-fx-background-color: #A9A9A9");
+                            }
+
+                            sX = -1;
+                            sY = -1;
+                        }
                     }
                 });
-                gridPane.add(stackPane, col, row);
+
+                board[row][col] = button;
+                gridPane.add(button, col, row);
+
             }
         }
 
-        setCenter(gridPane);
+        return gridPane;
+    }
+
+    private String setImageForPiece(int piece) {
+        String image = null;
+
+        switch (piece) {
+            case 1:
+                return "♙";
+            case 2:
+                return "♘";
+            case 3:
+                return "♗";
+            case 4:
+                return "♖";
+            case 5:
+                return "♕";
+            case 6:
+                return "♔";
+            case -1:
+                return "♟︎";
+            case -2:
+                return "♞";
+            case -3:
+                return "♝";
+            case -4:
+                return "♜";
+            case -5:
+                return "♛";
+            case -6:
+                return "♚";
+            default:
+                // Handle any other cases or set a default image
+                break;
+        }
+
+        return "";
+    }
+
+    private void updateGraphics(){
+        for (int col = 0; col < BOARD_SIZE; col++) {
+            for (int row = 0; row < BOARD_SIZE; row++) {
+                System.out.print(boardLogic.get(col, row) + " ");
+                String s = setImageForPiece(boardLogic.get(col, row));
+                board[col][row].setText(s);
+            }
+            System.out.println();
+        }
 
     }
+
+    private class Space {
+        private int row, col;
+
+        public Space(int row, int col) {
+            this.row = row;
+            this.col = col;
+        }
+    }
 }
-
-
 
