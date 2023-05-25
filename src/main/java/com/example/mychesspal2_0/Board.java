@@ -45,7 +45,7 @@ public class Board extends BorderPane {
             for (int col = 0; col < BOARD_SIZE; col++) {
                 Button button = new Button();
                 button.setPrefSize(75,75);
-                button.setStyle("-fx-background-color: " + ((row + col) % 2 == 0 ? "white" : "lightgray"));
+                 button.setStyle("-fx-background-color: " + ((row + col) % 2 == 0 ? "white" : "lightgray"));
                 squares[row][col] = button;
 
                 //Rectangle rect = new Rectangle(75, 75, (row + col) % 2 == 0 ? Color.WHITE : Color.LIGHTGRAY);
