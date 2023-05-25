@@ -73,7 +73,7 @@ public class kingsGambit extends BorderPane {
                        break;
 
                     case 2:
-                        instructions.setText("Black will now respond with pawn to d5");
+                        instructions.setText("Black will respond with pawn to d5");
                         squares[6][3].setText("");
                         squares[4][3].setText("♟︎");
                         break;
